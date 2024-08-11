@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Item from "./Item";
 import Order from "./Order";
+import p1 from '../images/1.jpg'; 
+import { FaMoon } from "react-icons/fa6";
+import { FaRegMoon } from "react-icons/fa";
+
+
 
 const ItemList = () => {
   const [orders, setOrders] = useState([]);
@@ -8,45 +13,46 @@ const ItemList = () => {
   const items = [
     {
       id: 1,
-      title: "Pizza Margherita",
+      title: "Margherita",
       ingredients: "Cheese, Tomato",
       price: 120,
-      imageUrl: "https://via.placeholder.com/300x200?text=Pizza+Margherita",
-    },
+      imageUrl: p1
+      ,
+    },  
     {
       id: 2,
-      title: "Pizza Chicken",
+      title: "Chicken",
       ingredients: "Cheese, Paprika, Onion, Grilled Chicken, Mushroom",
       price: 145,
       imageUrl: "https://via.placeholder.com/300x200?text=Pizza+Chicken",
     },
     {
       id: 3,
-      title: "Pizza Vegetarian",
+      title: "Vegetarian",
       ingredients: "Cheese, Tomato, Bell Peppers, Olives, Onion",
       price: 130,
-       imageUrl:"https://via.placeholder.com/300x200?text=Pizza+Vegetarian",
+      imageUrl: "https://via.placeholder.com/300x200?text=Pizza+Vegetarian",
     },
     {
       id: 4,
-      title: "Pizza Pepperoni",
+      title: "Pepperoni",
       ingredients: "Cheese, Tomato, Pepperoni",
       price: 140,
-       imageUrl:"https://via.placeholder.com/300x200?text=Pizza+Pepperoni",
+      imageUrl: "https://via.placeholder.com/300x200?text=Pizza+Pepperoni",
     },
     {
       id: 5,
-      title: "Pizza Hawaiian",
+      title: "Hawaiian",
       ingredients: "Cheese, Ham, Pineapple",
       price: 135,
-      imageUrl:"https://via.placeholder.com/300x200?text=Pizza+Hawaiian",
+      imageUrl: "https://via.placeholder.com/300x200?text=Pizza+Hawaiian",
     },
     {
       id: 6,
-      title: "Pizza BBQ Chicken",
+      title: "BBQ Chicken",
       ingredients: "Cheese, BBQ Sauce, Grilled Chicken, Onion",
       price: 150,
-      imageUrl:"https://via.placeholder.com/300x200?text=Pizza+BBQ Chicken",
+      imageUrl: "https://via.placeholder.com/300x200?text=Pizza+BBQ Chicken",
     },
   ];
 
@@ -91,13 +97,13 @@ const ItemList = () => {
   };
 
   return (
-    <div className={`container-fluid py-4 ${theme === "light" ? "bg-light" : "bg-dark"} ${theme === "light" ? "text-dark" : "text-light"}`} style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div className={`container py-4 ${theme === "light" ? "bg-light" : "bg-dark"} ${theme === "light" ? "text-dark" : "text-light"}`} style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1 className="text-center w-100">
           Pizza Menu
         </h1>
-        <button className="btn btn-secondary" onClick={toggleTheme}>
-          Toggle {theme === "light" ? "Dark" : "Light"} Theme
+        <button className={`btn ${theme === "light" ? "btn-secondary text-white" : "btn-light text-dark"}`} onClick={toggleTheme}>
+           {theme === "light" ? <FaMoon size={25} /> : <FaRegMoon size={25} />}
         </button>
       </div>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
@@ -109,6 +115,7 @@ const ItemList = () => {
               price={item.price}
               imageUrl={item.imageUrl}
               onAddToOrder={() => handleAddToOrder(item)}
+              theme={theme}  
             />
           </div>
         ))}
